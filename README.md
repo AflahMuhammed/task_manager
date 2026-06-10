@@ -103,17 +103,6 @@ baseURL: "https://task-manager-backend-wlp2.onrender.com/api"
 
 ---
 
-## 📸 Screenshots
-
-| Page | Preview |
-|------|---------|
-| **Login Page** | [Add screenshot here] |
-| **Registration Page** | [Add screenshot here] |
-| **Dashboard** | [Add screenshot here] |
-| **Task Management** | [Add screenshot here] |
-
----
-
 ## 📚 Learning Outcomes
 
 This project helped in understanding:
