@@ -77,24 +77,19 @@ src/
 git clone https://github.com/AflahMuhammed/task_manager.git
 ```
 
-### 2. Navigate to Project
-```bash
-cd task_manager
-```
-
-### 3. Install Dependencies
+### 2. Install Dependencies
 ```bash
 npm install
 ```
 
-### 4. Run Development Server
+### 3. Run Development Server
 ```bash
 npm run dev
 ```
 
 Application will start on: **http://localhost:5173**
 
-### 5. Backend Configuration
+### 4. Backend Configuration
 Update the backend API URL in `src/services/api.js`:
 
 ```javascript
