@@ -1,84 +1,142 @@
-Task Manager Frontend
-A modern Task Management Web Application built using React.js. The application allows users to securely register, log in, and manage their tasks through an intuitive dashboard.
-Live Demo
-Frontend Deployment:
-https://task-manager-iota-azure.vercel.app
-Features
-User Registration
-User Login
-JWT Authentication
-Protected Routes
-Create Tasks
-View Tasks
-Edit Tasks
-Delete Tasks
-Toggle Task Status
-Responsive Dashboard UI
-Backend API Integration
-Tech Stack
-Frontend
-React.js
-React Router DOM
-Axios
-CSS
-Backend
-Node.js
-Express.js
-MongoDB Atlas
-JWT Authentication
-Project Structure
+# 📋 Task Manager Frontend
+
+A modern Task Management Web Application built using **React.js**. The application allows users to securely register, log in, and manage their tasks through an intuitive dashboard.
+
+---
+
+## 🚀 Live Demo
+
+**Frontend Deployment:**  
+🔗 [task-manager-iota-azure.vercel.app](https://task-manager-iota-azure.vercel.app)
+
+---
+
+## ✨ Features
+
+### User Management
+- ✅ User Registration
+- ✅ User Login
+- ✅ JWT Authentication
+- ✅ Protected Routes
+
+### Task Management
+- ✅ Create Tasks
+- ✅ View Tasks
+- ✅ Edit Tasks
+- ✅ Delete Tasks
+- ✅ Toggle Task Status
+
+### UI/UX
+- ✅ Responsive Dashboard
+- ✅ Intuitive Interface
+- ✅ Backend API Integration
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React.js** - UI Library
+- **React Router DOM** - Client-side Routing
+- **Axios** - HTTP Client
+- **CSS** - Styling
+
+### Backend
+- **Node.js** - Runtime
+- **Express.js** - Web Framework
+- **MongoDB Atlas** - Database
+- **JWT** - Authentication
+
+---
+
+## 📁 Project Structure
+
+```
 src/
-├── components/
+├── components/          # Reusable UI Components
 ├── context/
-│   └── AuthContext.jsx
+│   └── AuthContext.jsx  # Authentication Context
 ├── pages/
-│   ├── Login.jsx
-│   ├── Register.jsx
-│   └── Dashboard.jsx
+│   ├── Login.jsx        # Login Page
+│   ├── Register.jsx     # Registration Page
+│   └── Dashboard.jsx    # Main Dashboard
 ├── routes/
-│   └── PrivateRoute.jsx
+│   └── PrivateRoute.jsx # Protected Routes
 ├── services/
-│   └── api.js
-├── App.jsx
-└── main.jsx
-Installation
-Clone Repository
+│   └── api.js          # API Configuration
+├── App.jsx             # Main App Component
+└── main.jsx            # Entry Point
+```
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone Repository
+```bash
 git clone https://github.com/AflahMuhammed/task_manager.git
-Navigate to Project
+```
+
+### 2. Navigate to Project
+```bash
 cd task_manager
-Install Dependencies
+```
+
+### 3. Install Dependencies
+```bash
 npm install
-Run Development Server
+```
+
+### 4. Run Development Server
+```bash
 npm run dev
-Application will start on:
-http://localhost:5173
-Backend Configuration
-Update the backend API URL in:
-src/services/api.js
-Example:
+```
+
+Application will start on: **http://localhost:5173**
+
+### 5. Backend Configuration
+Update the backend API URL in `src/services/api.js`:
+
+```javascript
 baseURL: "https://task-manager-backend-wlp2.onrender.com/api"
-Screenshots
-Login Page
-Add screenshot here.
-Registration Page
-Add screenshot here.
-Dashboard
-Add screenshot here.
-Task Management
-Add screenshot here.
-Learning Outcomes
+```
+
+---
+
+## 📸 Screenshots
+
+| Page | Preview |
+|------|---------|
+| **Login Page** | [Add screenshot here] |
+| **Registration Page** | [Add screenshot here] |
+| **Dashboard** | [Add screenshot here] |
+| **Task Management** | [Add screenshot here] |
+
+---
+
+## 📚 Learning Outcomes
+
 This project helped in understanding:
-React Fundamentals
-React Hooks
-React Router
-Axios API Integration
-Authentication Flow
-Protected Routes
-State Management
-Frontend Deployment using Vercel
-Frontend and Backend Integration
-Author
-Muhammed Aflah
+
+- ✓ React Fundamentals & Best Practices
+- ✓ React Hooks (useState, useEffect, useContext)
+- ✓ React Router for Client-side Navigation
+- ✓ Axios for API Integration
+- ✓ Authentication Flow & JWT Tokens
+- ✓ Protected Routes Implementation
+- ✓ State Management Patterns
+- ✓ Frontend Deployment using Vercel
+- ✓ Frontend and Backend Integration
+
+---
+
+## 👨‍💻 Author
+
+**Muhammed Aflah**  
 Model Engineering College, Kerala
-License
-This project was developed as part of a MERN Stack Internship Assignment.
+
+---
+
+## 📄 License
+
+This project was developed as part of a **MERN Stack Internship Assignment**.
