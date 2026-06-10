@@ -8,6 +8,7 @@ function Dashboard() {
   const [tasks, setTasks] = useState([]);
   const [loadingTasks, setLoadingTasks] = useState(true);
   const [savingTask, setSavingTask] = useState(false);
+  const [editingTaskId, setEditingTaskId] = useState("");
   const [taskForm, setTaskForm] = useState({ title: "", description: "" });
   const [taskError, setTaskError] = useState("");
   const [taskInfo, setTaskInfo] = useState("");
@@ -52,7 +53,24 @@ function Dashboard() {
     }));
   };
 
-  const handleCreateTask = async (e) => {
+  const handleEditTask = (task) => {
+    setEditingTaskId(task._id);
+    setTaskForm({
+      title: task.title,
+      description: task.description,
+    });
+    setTaskError("");
+    setTaskInfo("Editing task. Update the fields and save changes.");
+  };
+
+  const handleCancelEdit = () => {
+    setEditingTaskId("");
+    setTaskForm({ title: "", description: "" });
+    setTaskError("");
+    setTaskInfo("");
+  };
+
+  const handleSubmitTask = async (e) => {
     e.preventDefault();
 
     if (!taskForm.title.trim() || !taskForm.description.trim()) {
@@ -65,16 +83,23 @@ function Dashboard() {
     setTaskInfo("");
 
     try {
-      await api.post("/tasks", {
+      const payload = {
         title: taskForm.title.trim(),
         description: taskForm.description.trim(),
-      });
+      };
+
+      if (editingTaskId) {
+        await api.put(`/tasks/${editingTaskId}`, payload);
+      } else {
+        await api.post("/tasks", payload);
+      }
 
       setTaskForm({ title: "", description: "" });
+      setEditingTaskId("");
       await fetchTasks();
-      setTaskInfo("Task added to your board.");
+      setTaskInfo(editingTaskId ? "Task updated successfully." : "Task added to your board.");
     } catch (error) {
-      setTaskError(error.response?.data?.message || "Unable to create task.");
+      setTaskError(error.response?.data?.message || "Unable to save task.");
     } finally {
       setSavingTask(false);
     }
@@ -168,7 +193,7 @@ function Dashboard() {
             </div>
           </div>
 
-          <form className="task-form" onSubmit={handleCreateTask}>
+          <form className="task-form" onSubmit={handleSubmitTask}>
             {taskInfo ? <p className="form-success" aria-live="polite">{taskInfo}</p> : null}
 
             <label>
@@ -194,9 +219,17 @@ function Dashboard() {
 
             {taskError ? <p className="form-error" aria-live="polite">{taskError}</p> : null}
 
-            <button type="submit" className="primary-button" disabled={savingTask}>
-              {savingTask ? "Saving task..." : "Add task"}
-            </button>
+            <div className="task-form-actions">
+              <button type="submit" className="primary-button" disabled={savingTask}>
+                {savingTask ? "Saving task..." : editingTaskId ? "Save changes" : "Add task"}
+              </button>
+
+              {editingTaskId ? (
+                <button type="button" className="secondary-button" onClick={handleCancelEdit}>
+                  Cancel edit
+                </button>
+              ) : null}
+            </div>
           </form>
         </article>
 
@@ -229,14 +262,25 @@ function Dashboard() {
                       <h3>{task.title}</h3>
                     </div>
 
-                    <button
-                      type="button"
-                      className="icon-button danger-button"
-                      onClick={() => handleDeleteTask(task._id)}
-                      aria-label={`Delete task ${task.title}`}
-                    >
-                      Remove
-                    </button>
+                    <div className="task-card-top-actions">
+                      <button
+                        type="button"
+                        className="secondary-button"
+                        onClick={() => handleEditTask(task)}
+                        aria-label={`Edit task ${task.title}`}
+                      >
+                        Edit
+                      </button>
+
+                      <button
+                        type="button"
+                        className="icon-button danger-button"
+                        onClick={() => handleDeleteTask(task._id)}
+                        aria-label={`Delete task ${task.title}`}
+                      >
+                        Remove
+                      </button>
+                    </div>
                   </div>
 
                   <p>{task.description}</p>
